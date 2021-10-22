@@ -1,14 +1,19 @@
 <template>
   <div>
-    <Post/>
-    <Post/>
-    <Post/>
+    <Post :게시물="게시물[i]" v-for="(a,i) in 게시물" :key="i"/>
   </div>
 </template>
 
 <script>
+import Post from './Post.vue'
 export default {
 
+  components : {
+    Post,
+  },
+  props : {
+    게시물 : Array,
+  }
 }
 </script>
 
