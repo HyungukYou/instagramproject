@@ -7,11 +7,7 @@
     <div v-if="step == 1">
       <div class="upload-image" :style="'background-image:url(${이미지})'"></div>
        <div class="filters">
-          <div class="filter-1"></div>
-          <div class="filter-1"></div>
-          <div class="filter-1"></div>
-          <div class="filter-1"></div>
-          <div class="filter-1"></div>
+         <FilterBox :이미지="이미지"></FilterBox>
       </div>
     </div>
 
@@ -28,9 +24,11 @@
 
 <script>
 import Post from './Post.vue'
+import FilterBox from "./FilterBox";
 export default {
 
   components : {
+    FilterBox,
     Post,
   },
   props : {
