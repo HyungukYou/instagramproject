@@ -5,12 +5,13 @@
         <li>Cancel</li>
       </ul>
       <ul class="header-button-right">
-        <li>Next</li>
+        <li v-if="step==1" @click="step++">Next</li>
+        <li v-if="step==2" @click="publish">발행</li>
       </ul>
       <img src="./assets/logo.png" class="logo" />
     </div>
 
-    <Container :이미지="이미지" :게시물="게시물" :step="step"/>
+    <Container @write="작성한글 = $event" :이미지="이미지" :게시물="게시물" :step="step"/>
     <button @click="more">더보기</button>
 
     <div class="footer">
@@ -44,12 +45,27 @@ export default {
       더보기 : 0,
       step : 0,
       이미지 : '',
+      작성한글 : '',
     }
   },
   components: {
     Container,
   },
   methods : {
+    publish(){
+      var 내게시물 ={
+        name: "Kim Hyun",
+            userImage: "https://placeimg.com/100/100/arch",
+            postImage: this.이미지,
+            likes: 36,
+            date: "May 15",
+            liked: false,
+            content: this.작성한글,
+            filter: "perpetua"
+      };
+      this.게시물.unshift(내게시물);
+      this.step = 0;
+    },
     more(){
       axios.get(`https://codingapple1.github.io/vue/more${this.더보기}.json`)
           .then( 결과 => {
