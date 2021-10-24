@@ -5,7 +5,7 @@
     </div>
     <!-- 필터선택페이지 -->
     <div v-if="step == 1">
-      <div class="upload-image" :style="'background-image:url(${이미지})'"></div>
+      <div class="upload-image" :style="`background-image:url(${이미지})`"></div>
        <div class="filters">
          <FilterBox :이미지="이미지"></FilterBox>
       </div>
