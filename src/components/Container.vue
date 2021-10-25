@@ -5,9 +5,11 @@
     </div>
     <!-- 필터선택페이지 -->
     <div v-if="step == 1">
-      <div class="upload-image" :style="`background-image:url(${이미지})`"></div>
+      <div :class="선택한필터" class="upload-image" :style="`background-image:url(${이미지})`"></div>
        <div class="filters">
-         <FilterBox :이미지="이미지" v-for="필터 in 필터들" :key="필터" :필터="필터"></FilterBox>
+         <FilterBox :이미지="이미지" v-for="필터 in 필터들" :key="필터" :필터="필터">
+           <span>{{필터}}</span>
+         </FilterBox>
       </div>
     </div>
 
@@ -31,9 +33,14 @@ export default {
       필터들 : [ "aden", "_1977", "brannan", "brooklyn", "clarendon", "earlybird", "gingham", "hudson",
         "inkwell", "kelvin", "lark", "lofi", "maven", "mayfair", "moon", "nashville", "perpetua",
         "reyes", "rise", "slumber", "stinson", "toaster", "valencia", "walden", "willow", "xpro2"],
+      선택한필터 : '',
     }
   },
-
+   mounted(){
+    this.emitter.on('박스클릭함', (a)=>{
+      this.선택한필터 = a
+    })
+   },
   components : {
     FilterBox,
     Post,
