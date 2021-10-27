@@ -6,6 +6,7 @@ const store = createStore({
             name : 'kim',
             age : 20,
             likes : 30,
+            좋아요눌렀니 : false,
         }
     },
     mutations : {
@@ -16,8 +17,14 @@ const store = createStore({
             state.age += data
         },
         좋아요(state){
-            state.likes++
-        }
+            if( state.좋아요눌렀니 == false){
+                state.likes++;
+                state.좋아요눌렀니 = true;
+            }else {
+                state.likes--
+                state.좋아요눌렀니 = false;
+            }
+        },
     }
 })
 
