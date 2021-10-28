@@ -13,8 +13,10 @@
 
     <h4>안녕 {{ $store.state.name }}</h4>
     <h4>내나이 {{$store.state.age}}</h4>
-    <button @click="$store.commit('이름변경')">버튼</button>
-    <button @click="$store.commit('나이변경',10)">버튼</button>
+<!--    <button @click="$store.commit('이름변경')">버튼</button>-->
+    <button @click="나이변경(10)">버튼</button>
+
+    <p>{{작명}} {{age}} {{likes}}</p>
 
     <p>{{$store.state.more}}</p>
     <button @click="$store.dispatch('getData')">더보기버튼</button>
@@ -43,6 +45,7 @@
 import Container from "@/components/Container";
 import postdata from  './assets/postdata';
 import axios from 'axios';
+import {mapMutations,mapState} from 'vuex';
 axios.get()
 
 export default {
@@ -65,7 +68,18 @@ export default {
   components: {
     Container,
   },
+
+  computed : {
+    name(){
+      return this.$store.state.name
+    },
+    ...mapState(['name','age','likes']),
+    ...mapState({ 작명 : 'name' }),
+  },
+
   methods : {
+    ...mapMutations(['setMore','좋아요','나이변경']),
+
     publish(){
       var 내게시물 ={
         name: "Kim Hyun",
