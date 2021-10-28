@@ -16,6 +16,9 @@
     <button @click="$store.commit('이름변경')">버튼</button>
     <button @click="$store.commit('나이변경',10)">버튼</button>
 
+    <p>{{$store.state.more}}</p>
+    <button @click="$store.dispatch('getData')">더보기버튼</button>
+
     <Container @write="작성한글 = $event" :이미지="이미지" :게시물="게시물" :step="step"/>
     <button @click="more">더보기</button>
 
