@@ -21,12 +21,18 @@
         </div>
     </div>
 
+    <div v-if="step == 3">
+      <MyPage/>
+    </div>
+
+
   </div>
 </template>
 
 <script>
 import Post from './Post.vue'
 import FilterBox from "./FilterBox";
+import MyPage from "@/components/MyPage";
 export default {
   data(){
     return {
@@ -44,6 +50,7 @@ export default {
   components : {
     FilterBox,
     Post,
+    MyPage,
   },
   props : {
     게시물 : Array,
